@@ -60,8 +60,9 @@ Thumbs.db
 *.log
 
 # Internal documentation (should not be in public repo)
-# Note: These paths are relative to the repo root, so they won't match
-# But we keep them here as a reminder
-# ../cv_common/
-# ../../common/
+SUMMARY.md
+DEPLOYMENT_PLAN.md
+DEPLOYMENT_DECISIONS.md
+check-before-push.ps1
+*.code-workspace
 
