@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Willkommen</h2>
+<p>Dies ist eine Demo-Anwendung für QA-Demonstration.</p>
+
+<div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; color: white;">
+    <p style="margin: 0; font-size: 16px;">
+        📦 <strong>Quellcode auf GitHub:</strong> 
+        <a href="https://github.com/gorelikspb/kis-qa-demo" target="_blank" style="color: white; text-decoration: underline; font-weight: bold;">
+            github.com/gorelikspb/kis-qa-demo
+        </a>
+        <br>
+        <span style="font-size: 14px; opacity: 0.9;">Vollständiger Code, Tests und Dokumentation verfügbar</span>
+    </p>
+</div>
+
+<div style="margin-top: 30px;">
+    <h3>Verfügbare Funktionen:</h3>
+    <ul style="margin-top: 15px; line-height: 2;">
+        <li><strong>Patient anlegen</strong> - Erstellen Sie einen neuen Patienten mit Name, Geburtsdatum und Versicherungsnummer</li>
+        <li><strong>Termin erfassen</strong> - Erfassen Sie einen Termin mit Datum, Uhrzeit, Arzt und Status</li>
+        <li><strong>Patienten</strong> - Zeigen Sie alle angelegten Patienten</li>
+        <li><strong>Termine</strong> - Zeigen Sie alle erfassten Termine</li>
+    </ul>
+</div>
+
+<div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 6px;">
+    <details>
+        <summary style="cursor: pointer; font-weight: bold; font-size: 16px; color: #667eea; padding: 10px; background: white; border-radius: 4px;">
+            🧪 Testfälle zum Ausprobieren (klicken zum Aufklappen)
+        </summary>
+        <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 4px;">
+            <h4 style="color: #333; margin-bottom: 15px;">Patient anlegen - Testfälle:</h4>
+            <ol style="line-height: 2; padding-left: 20px;">
+                <li><strong>Pflichtfeld-Validierung:</strong> Lassen Sie das Feld "Name" leer und versuchen Sie zu speichern → Fehlermeldung sollte erscheinen</li>
+                <li><strong>Datum-Format:</strong> Geben Sie ein Datum im falschen Format ein (z.B. "1990-03-15") → Fehlermeldung sollte erscheinen</li>
+                <li><strong>Versicherungsnummer:</strong> Geben Sie eine Versicherungsnummer mit weniger als 10 Ziffern ein → Fehlermeldung sollte erscheinen</li>
+                <li><strong>Erfolgreiche Speicherung:</strong> Füllen Sie alle Felder korrekt aus:
+                    <ul style="margin-top: 5px; margin-left: 20px;">
+                        <li>Name: "Max Mustermann"</li>
+                        <li>Geburtsdatum: "15.03.1990"</li>
+                        <li>Versicherungsnummer: "1234567890"</li>
+                    </ul>
+                    → Erfolgsmeldung sollte erscheinen, Patient sollte in der Liste sein
+                </li>
+            </ol>
+            
+            <h4 style="color: #333; margin-top: 20px; margin-bottom: 15px;">Termin erfassen - Testfälle:</h4>
+            <ol style="line-height: 2; padding-left: 20px;">
+                <li><strong>Pflichtfelder:</strong> Lassen Sie verschiedene Pflichtfelder leer → Fehlermeldungen sollten erscheinen</li>
+                <li><strong>Uhrzeit-Format:</strong> Geben Sie eine Uhrzeit im falschen Format ein (z.B. "14:30:00") → Fehlermeldung sollte erscheinen</li>
+                <li><strong>Erfolgreiche Speicherung:</strong> Füllen Sie alle Felder korrekt aus → Erfolgsmeldung sollte erscheinen</li>
+            </ol>
+            
+            <div style="margin-top: 25px; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 6px; color: white;">
+                <h4 style="margin-top: 0; color: white;">🎁 Bonus: Finden Sie den versteckten Testfall!</h4>
+                <p style="margin-bottom: 10px;">Es gibt einen speziellen Testfall, der nicht in der Standard-Dokumentation steht. Wenn Sie ihn finden und erfolgreich durchführen, erhalten Sie einen ⭐ Stern als Belohnung!</p>
+                <p style="margin-bottom: 0; font-size: 14px; opacity: 0.9;"><em>Hinweis: Schauen Sie genau hin - manchmal sind die interessantesten Bugs die, die man nicht erwartet...</em></p>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 14px; color: #666;">
+                💡 <strong>Tipp:</strong> Für alle 18 detaillierten Testfälle siehe <code>manual_tests.md</code> im Repository.
+            </p>
+        </div>
+    </details>
+    
+    <h3 style="margin-top: 30px;">Test-Informationen:</h3>
+    <p style="margin-top: 10px;">Diese Anwendung enthält:</p>
+    <ul style="margin-top: 10px; line-height: 2;">
+        <li>Formular-Validierungen (Pflichtfelder, Formatprüfungen)</li>
+        <li>Fehlermeldungen bei ungültigen Eingaben</li>
+        <li>Erfolgreiche Speicherung bei korrekten Daten</li>
+    </ul>
+</div>
+{% endblock %}
+

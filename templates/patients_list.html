@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Patienten - Mini-KIS QA Demo{% endblock %}
+
+{% block content %}
+<h2>Patientenliste</h2>
+
+{% if patients %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Geburtsdatum</th>
+                <th>Versicherungsnummer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.name }}</td>
+                <td>{{ patient.geburtsdatum }}</td>
+                <td>{{ patient.versicherungsnummer }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="empty-state">
+        <p>Keine Patienten vorhanden.</p>
+        <p style="margin-top: 10px;"><a href="{{ url_for('patient') }}">Ersten Patienten anlegen</a></p>
+    </div>
+{% endif %}
+{% endblock %}
+

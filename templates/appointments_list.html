@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Termine - Mini-KIS QA Demo{% endblock %}
+
+{% block content %}
+<h2>Terminliste</h2>
+
+{% if appointments %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Patient</th>
+                <th>Datum</th>
+                <th>Uhrzeit</th>
+                <th>Arzt</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.id }}</td>
+                <td>
+                    {% for patient in patients %}
+                        {% if patient.id == appointment.patient_id %}
+                            {{ patient.name }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ appointment.datum }}</td>
+                <td>{{ appointment.uhrzeit }}</td>
+                <td>{{ appointment.arzt }}</td>
+                <td>{{ appointment.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="empty-state">
+        <p>Keine Termine vorhanden.</p>
+        <p style="margin-top: 10px;"><a href="{{ url_for('termin') }}">Ersten Termin erfassen</a></p>
+    </div>
+{% endif %}
+{% endblock %}
+
