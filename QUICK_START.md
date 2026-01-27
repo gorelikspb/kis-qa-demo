@@ -1,30 +1,28 @@
-# Быстрый старт для работодателя
+# Schnellstart für Arbeitgeber
 
-## 🚀 За 5 минут понять проект
+## 🚀 Projekt in 5 Minuten verstehen
 
-### 1. GitHub репозиторий (1 минута)
-Откройте README.md - там описание проекта и структура.
+### 1. GitHub Repository (1 Minute)
+Öffnen Sie `README.md` - dort finden Sie die Projektbeschreibung und Struktur.
 
-### 2. Live Demo (2 минуты)
-Откройте Live Demo и попробуйте:
-- Создать пациента (оставьте поле пустым - увидите валидацию)
-- Создать термин
+### 2. Live Demo (2 Minuten)
+Öffnen Sie die Live Demo und probieren Sie aus:
+- Einen Patienten anlegen (lassen Sie ein Feld leer - Sie sehen die Validierung)
+- Einen Termin erfassen
 
-### 3. Тесты (2 минуты)
-- Откройте `manual_tests.md` - 18 мануальных тест-кейсов
-- Откройте `tests/test_patient.py` - автоматизированные тесты
-- Откройте `BUGS.md` - примеры баг-репортов
+### 3. Tests (2 Minuten)
+- Öffnen Sie `manual_tests.md` - 18 manuelle Testfälle
+- Öffnen Sie `tests/test_patient.py` - automatisierte Tests
+- Öffnen Sie `BUGS.md` - Beispiele für Bug-Reports
 
-## 📋 Что демонстрирует проект
+## 📋 Was das Projekt demonstriert
 
-✅ **Testplanung** - планирование тестов  
-✅ **Manuelle Tests** - 18 тест-кейсов  
-✅ **GUI-Testautomatisierung** - Playwright тесты  
-✅ **Bug-Dokumentation** - примеры баг-репортов  
+✅ **Testplanung** - Testplanung  
+✅ **Manuelle Tests** - 18 Testfälle  
+✅ **GUI-Testautomatisierung** - Playwright Tests  
+✅ **Bug-Dokumentation** - Beispiele für Bug-Reports  
 
-## 🔗 Ссылки
+## 🔗 Links
 
-- **GitHub:** [ссылка на репозиторий]
-- **Live Demo:** [ссылка на демо]
-- **Подробное руководство:** см. `EMPLOYER_GUIDE.md`
-
+- **GitHub:** [Link zum Repository]
+- **Live Demo:** [Link zur Demo]

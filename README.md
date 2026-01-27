@@ -5,6 +5,8 @@ QA-Demo für ein vereinfachtes Klinik-Informationssystem
 
 > 📋 **CV-Projekt:** Dieses Projekt folgt den allgemeinen Regeln für CV-Projekte.
 
+> 🚀 **Schnellstart für Arbeitgeber:** Siehe [`QUICK_START.md`](QUICK_START.md) für eine 5-Minuten-Übersicht des Projekts.
+
 **Was wird gezeigt?**
 - Testkonzept
 - Manuelle Tests
