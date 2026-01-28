@@ -166,3 +166,4 @@ class TestTerminErfassen:
         # Prüfe Warnung
         expect(page.locator('small')).to_contain_text("Keine Patienten vorhanden")
 
+

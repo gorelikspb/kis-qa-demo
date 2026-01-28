@@ -18,3 +18,4 @@ def setup_page(page: Page, base_url):
     page.goto(base_url)
     yield page
 
+

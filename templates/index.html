@@ -28,9 +28,22 @@
 <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 6px;">
     <details>
         <summary style="cursor: pointer; font-weight: bold; font-size: 16px; color: #667eea; padding: 10px; background: white; border-radius: 4px;">
-            🧪 Testfälle zum Ausprobieren (klicken zum Aufklappen)
+            🧪 Testfälle zum Ausprobieren (klicken zum Aufklappen) <br/>+ 🎁 Bonus-Testfall für ⭐ <strong>QA Master</strong> ⭐!
         </summary>
         <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 4px;">
+            <div style="margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 6px; color: white;">
+                <p style="margin: 0; font-size: 16px; font-weight: bold;">
+                    <a href="https://github.com/gorelikspb/kis-qa-demo/blob/main/manual_tests.md" target="_blank" style="color: white; text-decoration: underline; font-weight: bold;">
+                        Alle 19 Testfälle auf GitHub
+                    </a>
+                </p>
+            </div>
+            
+            <div style="margin-bottom: 20px; padding: 15px; background: linear-gradient(135deg, #fdc82a 0%, #ff9800 100%); border-radius: 6px; color: white;">
+                <p style="margin: 0; font-size: 14px; opacity: 0.95;">
+                    🎁 <strong>Bonus-Testfall:</strong> Wenn Sie ein <strong>→ QA Master ←</strong> sind, versuchen Sie den versteckten Testfall zu finden - ohne die Dokumentation zu lesen! Wenn Sie ihn finden, erhalten Sie einen ⭐ Stern als Belohnung!
+                </p>
+            </div>
             <h4 style="color: #333; margin-bottom: 15px;">Patient anlegen - Testfälle:</h4>
             <ol style="line-height: 2; padding-left: 20px;">
                 <li><strong>Pflichtfeld-Validierung:</strong> Lassen Sie das Feld "Name" leer und versuchen Sie zu speichern → Fehlermeldung sollte erscheinen</li>
@@ -59,8 +72,44 @@
                 <p style="margin-bottom: 0; font-size: 14px; opacity: 0.9;"><em>Hinweis: Schauen Sie genau hin - manchmal sind die interessantesten Bugs die, die man nicht erwartet...</em></p>
             </div>
             
+            <div style="margin-top: 25px; padding: 15px; background: #e8f4f8; border-left: 4px solid #667eea; border-radius: 4px;">
+                <h4 style="color: #333; margin-top: 0; margin-bottom: 15px;">📋 Beispiel-Testfälle (aus der Dokumentation):</h4>
+                
+                <div style="margin-bottom: 20px; padding: 12px; background: white; border-radius: 4px;">
+                    <h5 style="color: #667eea; margin-top: 0; margin-bottom: 8px;">TC-PAT-001: Pflichtfeld Name leer</h5>
+                    <p style="margin: 5px 0;"><strong>Priorität:</strong> Hoch</p>
+                    <p style="margin: 5px 0;"><strong>Schritte:</strong></p>
+                    <ol style="margin: 5px 0 10px 20px; line-height: 1.6;">
+                        <li>Seite "Patient anlegen" öffnen</li>
+                        <li>Feld "Name" leer lassen</li>
+                        <li>Geburtsdatum (z.B. "15.03.1990") und Versicherungsnummer (z.B. "1234567890") ausfüllen</li>
+                        <li>Auf "Patient speichern" klicken</li>
+                    </ol>
+                    <p style="margin: 5px 0;"><strong>Erwartetes Ergebnis:</strong> Fehlermeldung: "Name ist ein Pflichtfeld"</p>
+                    <p style="margin: 5px 0;"><strong>Tatsächliches Ergebnis:</strong> ✅ Fehlermeldung wird angezeigt</p>
+                </div>
+                
+                <div style="margin-bottom: 20px; padding: 12px; background: white; border-radius: 4px;">
+                    <h5 style="color: #667eea; margin-top: 0; margin-bottom: 8px;">TC-PAT-004: Ungültiges Datumsformat</h5>
+                    <p style="margin: 5px 0;"><strong>Priorität:</strong> Mittel</p>
+                    <p style="margin: 5px 0;"><strong>Schritte:</strong></p>
+                    <ol style="margin: 5px 0 10px 20px; line-height: 1.6;">
+                        <li>Seite "Patient anlegen" öffnen</li>
+                        <li>Name eingeben: "Max Mustermann"</li>
+                        <li>Geburtsdatum eingeben: "1990-03-15" (falsches Format)</li>
+                        <li>Versicherungsnummer eingeben: "1234567890"</li>
+                        <li>Auf "Patient speichern" klicken</li>
+                    </ol>
+                    <p style="margin: 5px 0;"><strong>Erwartetes Ergebnis:</strong> Fehlermeldung: "Geburtsdatum muss im Format DD.MM.YYYY sein (z.B. 15.03.1990)"</p>
+                    <p style="margin: 5px 0;"><strong>Tatsächliches Ergebnis:</strong> ✅ Fehlermeldung wird angezeigt</p>
+                </div>
+            </div>
+            
             <p style="margin-top: 20px; font-size: 14px; color: #666;">
-                💡 <strong>Tipp:</strong> Für alle 18 detaillierten Testfälle siehe <code>manual_tests.md</code> im Repository.
+                💡 <strong>Tipp:</strong> Für alle 18 detaillierten Testfälle siehe 
+                <a href="https://github.com/gorelikspb/kis-qa-demo/blob/main/manual_tests.md" target="_blank" style="color: #667eea; text-decoration: underline;">
+                    <code>manual_tests.md</code> im Repository
+                </a>.
             </p>
         </div>
     </details>

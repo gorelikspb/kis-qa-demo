@@ -12,6 +12,22 @@ Dieses Dokument beschreibt die manuellen Testfälle für die Mini-KIS QA Demo-An
 
 ---
 
+<div style="padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px; margin: 20px 0;">
+
+**🔍 Hinweis für QA-Experten:**
+
+➡️ **Es gibt einen speziellen Testfall für → QA Master ←** ➡️
+
+Wenn Sie diesen Testfall finden und erfolgreich durchführen, erhalten Sie einen ⭐ Stern als Belohnung!
+
+💡 **Tipp:** Ein guter QA-Tester bemerkt Details und probiert verschiedene Eingaben aus. Schauen Sie genau hin - manchmal sind wichtige Hinweise direkt vor Ihren Augen versteckt...
+
+❓ **Nicht gefunden?** Kein Problem! Schauen Sie am Ende dieser Dokumentation nach - dort finden Sie alle Details: [TC-BONUS-001](#tc-bonus-001-qa-master-testfall) oder im [GitHub Repository](https://github.com/gorelikspb/kis-qa-demo/blob/main/manual_tests.md#tc-bonus-001-qa-master-testfall).
+
+</div>
+
+---
+
 ## Testfälle: Patient anlegen
 
 ### TC-PAT-001: Pflichtfeld Name leer
@@ -342,20 +358,20 @@ Fehlermeldung: "Patient ist ein Pflichtfeld" oder "Ungültige Patient-ID"
 
 **Schritte:**
 1. Seite "Patient anlegen" öffnen
-2. Name eingeben: **"QA Master"** oder **"QA Star"** oder **"Test Master"** (Groß-/Kleinschreibung egal)
-3. Geburtsdatum eingeben: "15.03.1990"
-4. Versicherungsnummer eingeben: "1234567890"
+2. Name eingeben: **"QA Master"** (oder Varianten wie "qa master", "QAMaster", "QA Master" etc. - Groß-/Kleinschreibung und Leerzeichen spielen keine Rolle)
+3. Geburtsdatum eingeben: beliebiges gültiges Datum (z.B. "15.03.1990")
+4. Versicherungsnummer eingeben: beliebige gültige 10-stellige Nummer (z.B. "1234567890")
 5. Auf "Patient speichern" klicken
 
 **Erwartetes Ergebnis:**  
-- Erfolgsmeldung mit ⭐ Stern: "⭐ Patient 'QA Master' wurde erfolgreich angelegt! 🎉 Sie haben den versteckten Testfall gefunden!"
+- Erfolgsmeldung mit ⭐ Stern: "⭐ Patient '[Ihr Name]' wurde erfolgreich angelegt! 🎉 Sie haben den versteckten Testfall gefunden!"
 - Patient wird normal gespeichert
 - Bonus-Belohnung wird angezeigt
 
 **Tatsächliches Ergebnis:**  
 ✅ Versteckter Testfall funktioniert - Easter Egg gefunden!
 
-**Hinweis:** Dieser Testfall ist absichtlich nicht in der Standard-Dokumentation prominent platziert. Er testet, ob Tester genau hinsehen und verschiedene Eingaben ausprobieren. Ein guter QA-Tester findet auch die versteckten Features! 🕵️
+**Hinweis:** Dieser Testfall ist in der Dokumentation vorhanden, aber ein aufmerksamer QA-Tester findet ihn auch ohne die vollständige Dokumentation zu lesen - einfach indem er bemerkt, dass **→ QA Master ←** oben in der Einleitung besonders hervorgehoben wurde. Ein guter QA-Tester folgt solchen Hinweisen und probiert verschiedene Eingaben aus! 🕵️
 
 ---
 

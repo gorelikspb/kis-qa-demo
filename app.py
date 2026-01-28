@@ -102,12 +102,14 @@ def patient():
         print(f"DEBUG: Patienten-Liste: {patients}")
         
         # 🎁 Easter Egg: Spezieller Testfall für QA-Experten
-        if 'qa master' in name.lower() or 'qa star' in name.lower() or 'test master' in name.lower():
+        # Funktioniert mit/ohne Leerzeichen und in jedem Register
+        name_normalized = name.lower().replace(' ', '').replace('-', '').replace('_', '')
+        if 'qamaster' in name_normalized or 'qastar' in name_normalized or 'testmaster' in name_normalized:
             flash(f"⭐ Patient '{name}' wurde erfolgreich angelegt! 🎉 Sie haben den versteckten Testfall gefunden!", 'success')
         else:
             flash(f"Patient '{name}' wurde erfolgreich angelegt!", 'success')
         
-        return redirect(url_for('patient'))
+        return redirect(url_for('patients_list'))
     
     return render_template('patient.html')
 

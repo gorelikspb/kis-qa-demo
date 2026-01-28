@@ -64,6 +64,7 @@ SUMMARY.md
 DEPLOYMENT_PLAN.md
 DEPLOYMENT_DECISIONS.md
 EMPLOYER_GUIDE.md
+GIT_COMMANDS.md
 check-before-push.ps1
 *.code-workspace
 

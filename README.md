@@ -1,11 +1,15 @@
 # Mini-KIS QA Demo
 
+[![Tests](https://github.com/gorelikspb/kis-qa-demo/actions/workflows/tests.yml/badge.svg)](https://github.com/gorelikspb/kis-qa-demo/actions/workflows/tests.yml)
+
 **Was ist das?**  
 QA-Demo für ein vereinfachtes Klinik-Informationssystem
 
+> 💡 **Test-Status:** Klicken Sie auf das Badge oben (✅ grün = alle Tests erfolgreich) um den vollständigen Test-Output mit allen Details zu sehen. Tests laufen automatisch bei jedem Push zu GitHub.
+
 > 📋 **CV-Projekt:** Dieses Projekt folgt den allgemeinen Regeln für CV-Projekte.
 
-> 🚀 **Schnellstart für Arbeitgeber:** Siehe [`QUICK_START.md`](QUICK_START.md) für eine 5-Minuten-Übersicht des Projekts.
+> 🚀 **Schnellstart:** Siehe [`QUICK_START.md`](QUICK_START.md) für eine 5-Minuten-Übersicht des Projekts.
 
 **Was wird gezeigt?**
 - Testkonzept
@@ -81,11 +85,22 @@ python app.py
 Siehe `manual_tests.md` für detaillierte Testfälle.
 
 ### Automatisierte Tests
+
+**Online (empfohlen):**
+- Klicken Sie auf das [Test-Badge oben](#) (✅ grün = alle Tests erfolgreich) um den vollständigen Test-Output zu sehen
+- Oder direkt: [GitHub Actions - Test Output](https://github.com/gorelikspb/kis-qa-demo/actions/workflows/tests.yml)
+- Dort sehen Sie: welche Tests durchgelaufen sind, wie lange sie gedauert haben, detaillierte Logs und ob sie erfolgreich waren
+- Tests laufen automatisch bei jedem Push zu GitHub
+
+**Lokal:**
 ```bash
 # Playwright Browser installieren (einmalig)
 playwright install
 
-# Tests ausführen
+# App starten (in einem Terminal)
+python app.py
+
+# Tests ausführen (in einem anderen Terminal)
 pytest tests/ -v
 
 # Mit Browser-UI (headed mode)

@@ -150,3 +150,4 @@ class TestPatientAnlegen:
         expect(page.locator('table')).to_contain_text("Anna Schmidt")
         expect(page.locator('table')).to_contain_text("Peter Weber")
 
+

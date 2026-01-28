@@ -35,7 +35,7 @@ python app.py
 - ✅ Kein Spin-down - App ist immer bereit
 - ✅ Schnelle Antwort für Demo-Projekte
 - ✅ Kein externer Ping-Service nötig
-- ✅ Besser für Arbeitgeber-Präsentation
+- ✅ Besser für Demo-Präsentation
 
 1. Gehen Sie zu https://railway.app
 2. Sign up / Sign in mit GitHub
