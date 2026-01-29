@@ -23,6 +23,9 @@ class TestPatientAnlegen:
         """Test: Fehlermeldung wenn Name leer ist"""
         page.click("text=Patient anlegen")
         
+        # Deaktiviere HTML5-Validierung für diesen Test
+        page.evaluate("document.querySelector('form').setAttribute('novalidate', '')")
+        
         # Fülle nur Geburtsdatum und Versicherungsnummer
         page.fill('input[name="geburtsdatum"]', "15.03.1990")
         page.fill('input[name="versicherungsnummer"]', "1234567890")
@@ -35,6 +38,9 @@ class TestPatientAnlegen:
         """Test: Fehlermeldung wenn Geburtsdatum leer ist"""
         page.click("text=Patient anlegen")
         
+        # Deaktiviere HTML5-Validierung für diesen Test
+        page.evaluate("document.querySelector('form').setAttribute('novalidate', '')")
+        
         # Fülle nur Name und Versicherungsnummer
         page.fill('input[name="name"]', "Max Mustermann")
         page.fill('input[name="versicherungsnummer"]', "1234567890")
@@ -46,6 +52,9 @@ class TestPatientAnlegen:
     def test_pflichtfeld_versicherungsnummer_leer(self, page: Page):
         """Test: Fehlermeldung wenn Versicherungsnummer leer ist"""
         page.click("text=Patient anlegen")
+        
+        # Deaktiviere HTML5-Validierung für diesen Test
+        page.evaluate("document.querySelector('form').setAttribute('novalidate', '')")
         
         # Fülle nur Name und Geburtsdatum
         page.fill('input[name="name"]', "Max Mustermann")
@@ -117,11 +126,11 @@ class TestPatientAnlegen:
         page.fill('input[name="versicherungsnummer"]', "1234567890")
         page.click('button[type="submit"]')
         
-        # Prüfe Erfolgsmeldung
-        expect(page.locator('.alert-success')).to_contain_text("Patient 'Max Mustermann' wurde erfolgreich angelegt")
+        # Nach erfolgreichem Speichern erfolgt Redirect zu patients_list
+        # Prüfe ob wir auf der Patientenliste sind
+        expect(page).to_have_url("http://localhost:5000/patients")
         
         # Prüfe ob Patient in der Liste erscheint
-        page.click("text=Patienten")
         expect(page.locator('table')).to_contain_text("Max Mustermann")
         expect(page.locator('table')).to_contain_text("15.03.1990")
         expect(page.locator('table')).to_contain_text("1234567890")
@@ -136,6 +145,9 @@ class TestPatientAnlegen:
         page.click('button[type="submit"]')
         
         expect(page.locator('.alert-success')).to_be_visible()
+        
+        # Nach erfolgreichem Speichern zurück zur Formular-Seite navigieren
+        page.click("text=Patient anlegen")
         
         # Zweiter Patient
         page.fill('input[name="name"]', "Peter Weber")
