@@ -168,16 +168,16 @@ class TestTerminErfassen:
     def test_termin_ohne_patient_nicht_moeglich(self, page: Page):
         """Test: Termin kann nicht ohne vorhandenen Patient erfasst werden"""
         # Gehe direkt zur Termin-Seite ohne Setup (kein Patient vorhanden)
-        # Но setup_patient выполняется автоматически, поэтому нужно проверить другое поведение
-        # Вместо этого проверим что есть предупреждение когда нет пациентов
+        # setup_patient wird automatisch ausgeführt, daher müssen wir anderes Verhalten prüfen
+        # Stattdessen prüfen wir dass es eine Warnung gibt wenn keine Patienten vorhanden sind
         page.click("text=Termin erfassen")
         
-        # Prüfe Warnung (если нет пациентов, должно быть сообщение)
-        # Но так как setup_patient создает пациента, проверим что форма работает корректно
-        # Изменим тест: проверим что нельзя создать термин без выбора пациента
+        # Prüfe Warnung (wenn keine Patienten vorhanden, sollte eine Meldung erscheinen)
+        # Da setup_patient einen Patienten erstellt, prüfen wir dass das Formular korrekt funktioniert
+        # Test ändern: prüfen dass Termin nicht ohne Patientenauswahl erstellt werden kann
         page.evaluate("document.querySelector('form').setAttribute('novalidate', '')")
         
-        # Попробуем отправить форму без выбора пациента
+        # Versuche Formular ohne Patientenauswahl zu senden
         page.fill('input[name="datum"]', "15.03.2024")
         page.fill('input[name="uhrzeit"]', "14:30")
         page.select_option('select[name="arzt"]', "Dr. Müller")

@@ -7,9 +7,10 @@ Dieses Dokument enthält dokumentierte Fehler (Bugs) für die Mini-KIS QA Demo-A
 ## Bug #001: Versicherungsnummer-Validierung akzeptiert Bindestriche nicht korrekt
 
 **Priorität:** Mittel  
-**Status:** Offen  
+**Status:** Behoben  
 **Gefunden am:** 27.01.2026  
-**Gefunden von:** QA-Team
+**Gefunden von:** QA-Team  
+**Behoben am:** 27.01.2026
 
 ### Beschreibung
 Die Versicherungsnummer-Validierung sollte Bindestriche und Leerzeichen entfernen können, bevor die Prüfung auf 10 Ziffern erfolgt. Aktuell wird eine Versicherungsnummer mit Bindestrichen (z.B. "1234-5678-90") als ungültig abgelehnt, obwohl sie eigentlich 10 Ziffern enthält.
@@ -25,7 +26,7 @@ Die Versicherungsnummer-Validierung sollte Bindestriche und Leerzeichen entferne
 Die Versicherungsnummer sollte akzeptiert werden, da sie nach Entfernen der Bindestriche genau 10 Ziffern enthält.
 
 ### Tatsächliches Ergebnis
-Fehlermeldung: "Versicherungsnummer muss genau 10 Ziffern enthalten"
+**Behoben:** Die Validierung entfernt jetzt korrekt Bindestriche und Leerzeichen vor der Prüfung. Versicherungsnummern mit Bindestrichen werden akzeptiert.
 
 ### Umgebung
 - Browser: Chrome 120.0
@@ -33,16 +34,8 @@ Fehlermeldung: "Versicherungsnummer muss genau 10 Ziffern enthalten"
 - Python: 3.11
 - Flask: 3.0.0
 
-### Screenshot
-```
-[Versicherungsnummer-Feld mit Fehlermeldung]
-```
-
-### Workaround
-Entfernen Sie manuell alle Bindestriche und Leerzeichen vor dem Absenden des Formulars.
-
 ### Zugehöriger Code
-`app.py`, Zeile 20-25:
+`app.py`, Zeile 35-41:
 ```python
 def validate_versicherungsnummer(vn):
     """Validiert Versicherungsnummer (Format: 10 Ziffern)"""
@@ -53,16 +46,17 @@ def validate_versicherungsnummer(vn):
     return bool(re.match(pattern, vn.replace('-', '').replace(' ', '')))
 ```
 
-**Hinweis:** Die Funktion entfernt bereits Bindestriche, aber die Regex-Prüfung erfolgt möglicherweise vor der Bereinigung.
+**Hinweis:** Die Funktion entfernt Bindestriche und Leerzeichen korrekt vor der Regex-Prüfung.
 
 ---
 
 ## Bug #002: Datum-Validierung akzeptiert ungültige Monatstage nicht konsistent
 
 **Priorität:** Hoch  
-**Status:** Offen  
+**Status:** Behoben  
 **Gefunden am:** 27.01.2026  
-**Gefunden von:** QA-Team
+**Gefunden von:** QA-Team  
+**Behoben am:** 27.01.2026
 
 ### Beschreibung
 Die Datum-Validierung akzeptiert manche ungültige Datumswerte (z.B. 31.02.2024), während andere korrekt abgelehnt werden. Die Validierung sollte konsistent alle ungültigen Datumswerte ablehnen.
@@ -78,7 +72,7 @@ Die Datum-Validierung akzeptiert manche ungültige Datumswerte (z.B. 31.02.2024)
 Fehlermeldung: "Geburtsdatum muss im Format DD.MM.YYYY sein" oder ähnliche Validierungsmeldung für ungültiges Datum.
 
 ### Tatsächliches Ergebnis
-Das Datum wird möglicherweise akzeptiert oder die Fehlermeldung ist nicht eindeutig genug.
+**Behoben:** Die Validierung verwendet `datetime.strptime()`, welches ungültige Datumswerte korrekt ablehnt. Ungültige Daten wie 31.02.2024 werden mit einer Fehlermeldung abgelehnt.
 
 ### Umgebung
 - Browser: Chrome 120.0
@@ -86,16 +80,8 @@ Das Datum wird möglicherweise akzeptiert oder die Fehlermeldung ist nicht einde
 - Python: 3.11
 - Flask: 3.0.0
 
-### Screenshot
-```
-[Datum-Feld mit möglicherweise erfolgreicher Speicherung]
-```
-
-### Workaround
-Verwenden Sie nur gültige Datumswerte beim Testen.
-
 ### Zugehöriger Code
-`app.py`, Zeile 27-32:
+`app.py`, Zeile 44-50:
 ```python
 def validate_date(date_string):
     """Validiert Datum im Format DD.MM.YYYY"""
@@ -106,16 +92,17 @@ def validate_date(date_string):
         return False
 ```
 
-**Hinweis:** `strptime` sollte eigentlich ungültige Datumswerte ablehnen, aber es gibt Edge-Cases die möglicherweise nicht abgedeckt sind.
+**Hinweis:** `strptime` lehnt ungültige Datumswerte korrekt ab und wirft einen `ValueError`, der abgefangen wird.
 
 ---
 
 ## Bug #003: Fehlermeldungen werden nicht gelöscht bei erneutem Absenden
 
 **Priorität:** Niedrig  
-**Status:** Offen  
+**Status:** Geschlossen (Nicht reproduzierbar)  
 **Gefunden am:** 27.01.2026  
-**Gefunden von:** QA-Team
+**Gefunden von:** QA-Team  
+**Geschlossen am:** 27.01.2026
 
 ### Beschreibung
 Wenn ein Formular mit Fehlern abgesendet wird und dann korrigiert wird, bleiben die alten Fehlermeldungen sichtbar, auch wenn die neuen Eingaben korrekt sind. Die Fehlermeldungen sollten bei jedem neuen Submit-Versuch gelöscht werden.
@@ -132,21 +119,13 @@ Wenn ein Formular mit Fehlern abgesendet wird und dann korrigiert wird, bleiben 
 Die alten Fehlermeldungen sollten verschwinden und nur eine Erfolgsmeldung sollte angezeigt werden.
 
 ### Tatsächliches Ergebnis
-Die alten Fehlermeldungen bleiben sichtbar zusammen mit der neuen Erfolgsmeldung, was zu Verwirrung führt.
+**Nicht reproduzierbar:** Der Bug konnte bei erneuter Prüfung nicht reproduziert werden. Flask's `flash()`-Mechanismus löscht die Nachrichten nach dem Anzeigen korrekt. Das Verhalten entspricht den Erwartungen.
 
 ### Umgebung
 - Browser: Chrome 120.0, Firefox 121.0
 - OS: Windows 10
 - Python: 3.11
 - Flask: 3.0.0
-
-### Screenshot
-```
-[Formular mit mehreren Fehlermeldungen und einer Erfolgsmeldung gleichzeitig]
-```
-
-### Workaround
-Laden Sie die Seite neu, bevor Sie das Formular erneut ausfüllen.
 
 ### Zugehöriger Code
 `templates/base.html`, Zeile 60-66:
@@ -168,26 +147,27 @@ Laden Sie die Seite neu, bevor Sie das Formular erneut ausfüllen.
 
 ## Bug-Zusammenfassung
 
-**Gesamtanzahl dokumentierter Bugs:** 4
+**Gesamtanzahl dokumentierter Bugs:** 6
 
 **Nach Priorität:**
 - Hoch: 2 Bugs
-- Mittel: 1 Bug
+- Mittel: 3 Bugs
 - Niedrig: 1 Bug
 
 **Nach Status:**
-- Offen: 3 Bugs
-- Behoben: 0 Bugs
-- Verifiziert: 0 Bugs
+- Behoben: 3 Bugs
+- Geschlossen (Nicht reproduzierbar): 1 Bug
+- Offen: 2 Bugs
 
 ---
 
 ## Bug #004: Patienten erscheinen nicht in der Liste nach dem Anlegen
 
 **Priorität:** Hoch  
-**Status:** Offen  
+**Status:** Behoben  
 **Gefunden am:** 27.01.2026  
-**Gefunden von:** Lokale Tests
+**Gefunden von:** Lokale Tests  
+**Behoben am:** 27.01.2026
 
 ### Beschreibung
 Nach dem erfolgreichen Anlegen eines Patienten erscheint dieser nicht in der Patientenliste (`/patients`), obwohl eine Erfolgsmeldung angezeigt wird.
@@ -210,7 +190,7 @@ Der neu angelegte Patient sollte in der Patientenliste erscheinen mit:
 - Versicherungsnummer: "1234567890"
 
 ### Tatsächliches Ergebnis
-Die Patientenliste ist leer oder zeigt nur Patienten an, die vor einem Neustart des Servers angelegt wurden.
+**Behoben:** Nach dem Anlegen eines Patienten erfolgt automatisch ein Redirect zur Patientenliste (`/patients`), wo der neu angelegte Patient sofort sichtbar ist. Die Daten werden korrekt im In-Memory Storage gespeichert und zwischen Requests beibehalten.
 
 ### Umgebung
 - Browser: Chrome 120.0
@@ -219,29 +199,125 @@ Die Patientenliste ist leer oder zeigt nur Patienten an, die vor einem Neustart 
 - Flask: 3.0.0
 - In-Memory Storage verwendet
 
-### Mögliche Ursachen
-- Daten werden in In-Memory Storage (`patients = []`) gespeichert
-- Möglicherweise Problem mit Session-Management oder Request-Handling
-- Daten könnten zwischen Requests verloren gehen
-- Bei Neustart des Servers gehen alle Daten verloren (erwartetes Verhalten für In-Memory Storage)
-
-### Workaround
-- Nach dem Anlegen eines Patienten die Seite manuell aktualisieren
-- Oder direkt nach dem Anlegen zur Patientenliste navigieren ohne Neustart des Servers
-
 ### Zugehöriger Code
-`app.py`, Zeile 14:
+`app.py`, Zeile 112:
 ```python
-# In-Memory Storage (für Demo-Zwecke)
-patients = []
+return redirect(url_for('patients_list'))
 ```
 
-`app.py`, Zeile 98:
+**Hinweis:** Nach erfolgreichem Anlegen erfolgt automatisch ein Redirect zur Patientenliste, sodass der Patient sofort sichtbar ist.
+
+---
+
+## Bug #005: Derselbe Patient kann mehrmals angelegt werden
+
+**Priorität:** Mittel  
+**Status:** Offen  
+**Gefunden am:** 27.01.2026  
+**Gefunden von:** QA-Team
+
+### Beschreibung
+Es ist möglich, denselben Patienten mehrmals anzulegen, ohne dass das System eine Warnung ausgibt oder die Duplikate verhindert. Dies führt zu doppelten Einträgen in der Patientenliste mit identischen Daten (Name, Geburtsdatum, Versicherungsnummer).
+
+### Schritte zur Reproduktion
+1. Öffnen Sie die Seite "Patient anlegen"
+2. Geben Sie alle Felder korrekt ein:
+   - Name: "Aleksandr Gorelik"
+   - Geburtsdatum: "14.12.1980"
+   - Versicherungsnummer: "1234567890"
+3. Klicken Sie auf "Patient speichern"
+4. Navigieren Sie zurück zur Seite "Patient anlegen"
+5. Geben Sie dieselben Daten erneut ein
+6. Klicken Sie auf "Patient speichern"
+
+### Erwartetes Ergebnis
+Das System sollte eine Warnung ausgeben oder verhindern, dass derselbe Patient (basierend auf Name, Geburtsdatum und/oder Versicherungsnummer) mehrmals angelegt wird.
+
+### Tatsächliches Ergebnis
+Der Patient wird mehrmals erfolgreich angelegt und erscheint als separate Einträge in der Patientenliste mit unterschiedlichen IDs, aber identischen Daten.
+
+### Umgebung
+- Browser: Chrome 120.0
+- OS: Windows 10
+- Python: 3.11
+- Flask: 3.0.0
+
+### Screenshot
+```
+[Patientenliste mit mehreren identischen Einträgen:
+- ID: 1, Name: Aleksandr Gorelik, Geburtsdatum: 14.12.1980, Versicherungsnummer: 1234567890
+- ID: 2, Name: Aleksandr Gorelik, Geburtsdatum: 14.12.1980, Versicherungsnummer: 1234567890
+- ID: 3, Name: Aleksandr Gorelik, Geburtsdatum: 14.12.1980, Versicherungsnummer: 123-456-7890]
+```
+
+### Zugehöriger Code
+`app.py`, Zeile 91-98:
 ```python
+# Erfolgreiche Speicherung
+patient_data = {
+    'id': len(patients) + 1,
+    'name': name,
+    'geburtsdatum': geburtsdatum,
+    'versicherungsnummer': versicherungsnummer
+}
 patients.append(patient_data)
 ```
 
-**Hinweis:** Dies könnte ein Problem mit In-Memory Storage sein, oder es gibt ein Problem mit der Datenpersistenz zwischen Requests.
+**Hinweis:** Es gibt keine Prüfung auf Duplikate vor dem Hinzufügen eines neuen Patienten.
+
+---
+
+## Bug #006: Termin mit Status "Geplant" kann mit Datum in der Vergangenheit erstellt werden
+
+**Priorität:** Mittel  
+**Status:** Offen  
+**Gefunden am:** 27.01.2026  
+**Gefunden von:** QA-Team
+
+### Beschreibung
+Es ist möglich, einen Termin mit dem Status "Geplant" zu erstellen, obwohl das Datum in der Vergangenheit liegt. Dies ist logisch nicht sinnvoll, da ein geplanter Termin nur für zukünftige Daten möglich sein sollte.
+
+### Schritte zur Reproduktion
+1. Öffnen Sie die Seite "Termin erfassen"
+2. Wählen Sie einen Patienten aus der Liste
+3. Geben Sie ein Datum ein, das in der Vergangenheit liegt (z.B. "15.01.2024")
+4. Geben Sie eine Uhrzeit ein: "14:30"
+5. Wählen Sie einen Arzt aus: "Dr. Müller"
+6. Wählen Sie Status: "Geplant"
+7. Klicken Sie auf "Termin speichern"
+
+### Erwartetes Ergebnis
+Das System sollte eine Validierungsmeldung ausgeben, dass ein Termin mit Status "Geplant" nicht mit einem Datum in der Vergangenheit erstellt werden kann.
+
+### Tatsächliches Ergebnis
+Der Termin wird erfolgreich erstellt, obwohl das Datum in der Vergangenheit liegt und der Status "Geplant" ist.
+
+### Umgebung
+- Browser: Chrome 120.0
+- OS: Windows 10
+- Python: 3.11
+- Flask: 3.0.0
+
+### Screenshot
+```
+[Termin-Formular mit:
+- Datum: 15.01.2024 (in der Vergangenheit)
+- Status: Geplant
+- Erfolgsmeldung: "Termin wurde erfolgreich erfasst!"]
+```
+
+### Zugehöriger Code
+`app.py`, Zeile 117-187:
+```python
+@app.route('/termin', methods=['GET', 'POST'])
+def termin():
+    """Termin erfassen"""
+    if request.method == 'POST':
+        # ... Validierung ...
+        # Keine Prüfung ob Datum in der Vergangenheit liegt bei Status "Geplant"
+```
+
+**Hinweis:** Es fehlt eine Validierung, die prüft, ob ein Termin mit Status "Geplant" ein Datum in der Zukunft hat.
 
 ---
 

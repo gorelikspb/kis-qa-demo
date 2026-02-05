@@ -6,7 +6,7 @@
 Öffnen Sie [`README.md`](README.md) - dort finden Sie die Projektbeschreibung und Struktur.
 
 ### 2. Live Demo (2 Minuten)
-Öffnen Sie die Live Demo und probieren Sie aus:
+Öffnen Sie die [Live Demo](https://kis-qa-demo.up.railway.app/) und probieren Sie aus:
 - Einen Patienten anlegen (lassen Sie ein Feld leer - Sie sehen die Validierung)
 - Einen Termin erfassen
 
@@ -40,4 +40,4 @@ pytest tests/ -v
 ## 🔗 Links
 
 - **GitHub:** [github.com/gorelikspb/kis-qa-demo](https://github.com/gorelikspb/kis-qa-demo)
-- **Live Demo:** [Link zur Demo] (wird nach Deployment aktualisiert)
+- **Live Demo:** [kis-qa-demo.up.railway.app](https://kis-qa-demo.up.railway.app/)

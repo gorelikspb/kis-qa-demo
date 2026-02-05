@@ -97,7 +97,7 @@ def patient():
         }
         patients.append(patient_data)
         
-        # Debug: Проверка что данные добавлены
+        # Debug: Check that data was added
         print(f"DEBUG: Patient hinzugefügt. Gesamtanzahl Patienten: {len(patients)}")
         print(f"DEBUG: Patienten-Liste: {patients}")
         
@@ -195,7 +195,7 @@ def termin():
 @app.route('/patients')
 def patients_list():
     """Liste aller Patienten"""
-    # Debug: Проверка что данные доступны
+    # Debug: Check that data is available
     print(f"DEBUG: Patientenliste aufgerufen. Gesamtanzahl Patienten: {len(patients)}")
     print(f"DEBUG: Patienten-Liste: {patients}")
     return render_template('patients_list.html', patients=patients)

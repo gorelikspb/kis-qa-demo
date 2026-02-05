@@ -7,7 +7,7 @@ QA-Demo für ein vereinfachtes Klinik-Informationssystem
 
 > 💡 **Test-Status:** Klicken Sie auf das Badge oben (✅ grün = alle Tests erfolgreich) um den vollständigen Test-Output mit allen Details zu sehen. Tests laufen automatisch bei jedem Push zu GitHub.
 
-> 📋 **CV-Projekt:** Dieses Projekt folgt den allgemeinen Regeln für CV-Projekte.
+> 📋 **CV-Projekt:** Dieses Projekt nur zu Demonstrationszwecken.
 
 > 🚀 **Schnellstart:** Siehe [`QUICK_START.md`](QUICK_START.md) für eine 5-Minuten-Übersicht des Projekts.
 
@@ -27,9 +27,9 @@ QA-Demo für ein vereinfachtes Klinik-Informationssystem
 
 ## Live Demo
 
-**Live Demo:** [URL будет добавлена после развертывания]
+**Live Demo:** [https://kis-qa-demo.up.railway.app/](https://kis-qa-demo.up.railway.app/)
 
-Простая веб-страница, где можно:
+Einfache Webseite, auf der folgendes möglich ist:
 - „Patient anlegen" (Name, Geburtsdatum, Versicherungsnummer)
 - „Termin erfassen" (Datum, Arzt, Status)
 - Validierungen / Fehlermeldungen sehen
@@ -51,38 +51,19 @@ autotest/
 ├── manual_tests.md        # Manuelle Testfälle (10-15 Test Cases)
 ├── BUGS.md               # Bug-Reports mit Beispielen
 ├── requirements.txt      # Dependencies
-├── DEPLOY.md            # Deployment-Anleitung
 └── README.md            # Diese Datei
 ```
 
 ## Quick Start
 
-```bash
-# 1. Virtual Environment erstellen (in dev_res, nicht in dev)
-#    Erstellen Sie den Ordner falls nötig
-mkdir D:\dev_res\cv\autotest -Force
-python -m venv D:\dev_res\cv\autotest\venv
+**Für die Demo:** Öffnen Sie einfach die [Live Demo](#live-demo) oben.
 
-# 2. Virtual Environment aktivieren
-D:\dev_res\cv\autotest\venv\Scripts\activate  # Windows
-# source D:\dev_res\cv\autotest\venv/bin/activate  # Linux/Mac
-
-# 3. Dependencies installieren
-pip install -r requirements.txt
-
-# 4. App starten
-python app.py
-
-# 5. Im Browser öffnen
-# http://localhost:5000
-```
-
-**Hinweis:** Das virtuelle Environment wird in `dev_res` erstellt, nicht in `dev`, um die Synchronisation mit Google Drive zu vermeiden. Für Online-Deployment ist dies nicht relevant - dort wird das Environment automatisch auf dem Server erstellt.
+**Für lokalen Start:** Siehe [`QUICK_START.md`](QUICK_START.md) für detaillierte Anweisungen.
 
 ## Testausführung
 
 ### Manuelle Tests
-Siehe `manual_tests.md` für detaillierte Testfälle.
+Siehe [`manual_tests.md`](manual_tests.md) für detaillierte Testfälle.
 
 ### Automatisierte Tests
 
@@ -129,5 +110,5 @@ Siehe `BUGS.md` für dokumentierte Fehler mit:
 
 ## Contact
 
-Für Fragen: [Ihre Email]
+Für Fragen: gorelikgo@gmail.com
 
