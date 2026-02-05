@@ -1,0 +1,8 @@
+# Screenshots für Bug-Reports
+
+Diese Datei stellt sicher, dass der Ordner `screenshots/` im Git-Repository vorhanden ist.
+
+Bitte fügen Sie die Screenshots für die Bugs hier hinzu:
+- `bug-005-duplicate-patient.png` - Screenshot für Bug #005
+- `bug-006-past-date-planned.png` - Screenshot für Bug #006
+

@@ -4,6 +4,22 @@ Dieses Dokument enthält dokumentierte Fehler (Bugs) für die Mini-KIS QA Demo-A
 
 ---
 
+## Bug-Zusammenfassung
+
+**Gesamtanzahl dokumentierter Bugs:** 6
+
+**Nach Priorität:**
+- Hoch: 2 Bugs
+- Mittel: 3 Bugs
+- Niedrig: 1 Bug
+
+**Nach Status:**
+- Behoben: 3 Bugs
+- Geschlossen (Nicht reproduzierbar): 1 Bug
+- Offen: 2 Bugs
+
+---
+
 ## Bug #001: Versicherungsnummer-Validierung akzeptiert Bindestriche nicht korrekt
 
 **Priorität:** Mittel  
@@ -145,22 +161,6 @@ Die alten Fehlermeldungen sollten verschwinden und nur eine Erfolgsmeldung sollt
 
 ---
 
-## Bug-Zusammenfassung
-
-**Gesamtanzahl dokumentierter Bugs:** 6
-
-**Nach Priorität:**
-- Hoch: 2 Bugs
-- Mittel: 3 Bugs
-- Niedrig: 1 Bug
-
-**Nach Status:**
-- Behoben: 3 Bugs
-- Geschlossen (Nicht reproduzierbar): 1 Bug
-- Offen: 2 Bugs
-
----
-
 ## Bug #004: Patienten erscheinen nicht in der Liste nach dem Anlegen
 
 **Priorität:** Hoch  
@@ -243,12 +243,7 @@ Der Patient wird mehrmals erfolgreich angelegt und erscheint als separate Eintr�
 - Flask: 3.0.0
 
 ### Screenshot
-```
-[Patientenliste mit mehreren identischen Einträgen:
-- ID: 1, Name: Aleksandr Gorelik, Geburtsdatum: 14.12.1980, Versicherungsnummer: 1234567890
-- ID: 2, Name: Aleksandr Gorelik, Geburtsdatum: 14.12.1980, Versicherungsnummer: 1234567890
-- ID: 3, Name: Aleksandr Gorelik, Geburtsdatum: 14.12.1980, Versicherungsnummer: 123-456-7890]
-```
+![Bug #005: Derselbe Patient kann mehrmals angelegt werden](screenshots/bug-005-duplicate-patient.png)
 
 ### Zugehöriger Code
 `app.py`, Zeile 91-98:
@@ -299,12 +294,7 @@ Der Termin wird erfolgreich erstellt, obwohl das Datum in der Vergangenheit lieg
 - Flask: 3.0.0
 
 ### Screenshot
-```
-[Termin-Formular mit:
-- Datum: 15.01.2024 (in der Vergangenheit)
-- Status: Geplant
-- Erfolgsmeldung: "Termin wurde erfolgreich erfasst!"]
-```
+![Bug #006: Termin mit Status Geplant kann mit Datum in der Vergangenheit erstellt werden](screenshots/bug-006-past-date-planned.png)
 
 ### Zugehöriger Code
 `app.py`, Zeile 117-187:
